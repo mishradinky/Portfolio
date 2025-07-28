@@ -1,0 +1,463 @@
+/* CertificationsSectionWithRobot.css - Original with Mobile Fixes */
+
+.certifications-section-with-robot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+}
+
+.certifications-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.certifications-intro-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1200px;
+  width: 100%;
+  padding: 20px;
+}
+
+.robot-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.thinking-bubble {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(0, 245, 255, 0.5);
+  border-radius: 25px;
+  padding: 20px 30px;
+  position: relative;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+  backdrop-filter: blur(15px);
+  margin-bottom: 30px;
+  max-width: 300px;
+}
+
+.thinking-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.typing-animation {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #00f5ff;
+  border-radius: 50%;
+  animation: blink 1.5s infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.thinking-text {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+
+.bubble-arrow {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid rgba(0, 245, 255, 0.5);
+}
+
+.hero-lottie {
+  transition: transform 0.3s ease;
+}
+
+.hero-lottie:hover {
+  transform: scale(1.05);
+}
+
+.welcome-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.certifications-title {
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  background: linear-gradient(45deg, #ffffff, #00f5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.certifications-subtitle {
+  color: #00f5ff;
+  font-size: 24px;
+  margin-bottom: 30px;
+  font-family: 'Courier New', monospace;
+}
+
+.certifications-stats {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  background: rgba(0, 245, 255, 0.2);
+  color: #00f5ff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid rgba(0, 245, 255, 0.3);
+}
+
+/* Content container styles */
+.certifications-content-container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 40px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: transparent;
+}
+
+.certifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.certifications-main-title {
+  color: #ffffff;
+  font-size: 36px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ffffff, #00f5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.back-button {
+  background: rgba(0, 245, 255, 0.2);
+  border: 1px solid rgba(0, 245, 255, 0.5);
+  color: #00f5ff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(0, 245, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 245, 255, 0.3);
+}
+
+/* Certifications grid */
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.certification-category-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 245, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certification-category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 245, 255, 0.2);
+}
+
+.category-title {
+  color: #00f5ff;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+}
+
+.certification-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.certification-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(0, 245, 255, 0.1);
+  border-radius: 10px;
+  border-left: 3px solid #00f5ff;
+  transition: background 0.3s ease;
+}
+
+.certification-item:hover {
+  background: rgba(0, 245, 255, 0.2);
+}
+
+.certification-icon {
+  font-size: 20px;
+  min-width: 24px;
+}
+
+.certification-name {
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Achievements section */
+.achievements-summary {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.achievements-summary h2 {
+  color: #00f5ff;
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-family: 'Courier New', monospace;
+}
+
+.achievement-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.achievement-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  border-radius: 15px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+}
+
+.achievement-icon {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.achievement-card h3 {
+  color: #00f5ff;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.achievement-card p {
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 50px rgba(0, 245, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(0, 245, 255, 0.3);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Mobile fixes - targeted adjustments */
+@media (max-width: 768px) {
+  .certifications-intro {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+    padding: 80px 20px 100px;
+  }
+  
+  .welcome-text {
+    align-items: center;
+    text-align: center;
+  }
+  
+  .certifications-title {
+    font-size: clamp(2.2rem, 6vw, 3rem);
+  }
+  
+  .certifications-subtitle {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+  }
+  
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    margin: 0 10px;
+  }
+  
+  .certifications-content-container {
+    padding: 80px 20px 100px;
+    max-height: 100vh;
+  }
+  
+  .certifications-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .certifications-main-title {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+  }
+  
+  .achievement-cards {
+    grid-template-columns: 1fr;
+    margin: 0 10px;
+  }
+  
+  .thinking-bubble {
+    padding: 15px 20px;
+    max-width: 250px;
+  }
+  
+  .thinking-text {
+    font-size: 16px;
+  }
+  
+  .hero-lottie {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .certifications-intro {
+    padding: 70px 15px 90px;
+  }
+  
+  .certifications-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+  
+  .certifications-subtitle {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+  
+  .certifications-content-container {
+    padding: 70px 15px 90px;
+  }
+  
+  .certifications-grid {
+    gap: 20px;
+  }
+  
+  .certification-category-card {
+    padding: 20px;
+  }
+  
+  .thinking-bubble {
+    padding: 12px 15px;
+    max-width: 220px;
+  }
+  
+  .hero-lottie {
+    transform: scale(0.7);
+  }
+}
+
+@media (max-width: 375px) {
+  .certifications-intro,
+  .certifications-content-container {
+    padding: 60px 10px 80px;
+  }
+  
+  .certifications-title {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+  }
+  
+  .thinking-bubble {
+    padding: 10px 12px;
+    max-width: 200px;
+  }
+  
+  .hero-lottie {
+    transform: scale(0.6);
+  }
+}
+
+@media (max-height: 600px) {
+  .certifications-content-container {
+    padding: 60px 15px 80px;
+  }
+  
+  .certification-category-card {
+    padding: 20px;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .certifications-intro,
+  .certifications-content-container {
+    padding: 50px 20px;
+  }
+}

@@ -1,0 +1,523 @@
+/* HomeSection.css - Enhanced with Modern Popup Styling */
+
+/* Main container for the home section */
+.home-section {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  /* Enhanced easing for cinematic feel */
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Horizontal scroll container within home section */
+.home-horizontal-scroll {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  /* Hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.home-horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.home-horizontal-scroll.dragging {
+  cursor: grabbing;
+  cursor: -webkit-grabbing;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Individual slide within home section */
+.home-slide {
+  flex-shrink: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+/* Hero content wrapper */
+.hero-content {
+  color: white;
+  text-align: center;
+  z-index: 10;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6), 
+              0 0 20px rgba(255, 255, 255, 0.2);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Cinematic glow effect */
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+}
+
+/* Main heading with elegant styling */
+.hero-title {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+  color: #ffffff;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Lottie animation container */
+.hero-lottie {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 0 20px rgba(0, 245, 255, 0.3));
+}
+
+/* Welcome subtitle with Times New Roman */
+.hero-subtitle {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2.2rem;
+  opacity: 0.9;
+  margin-bottom: 3rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: #f0f0f0;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Content text for slides */
+.hero-content-text {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  opacity: 0.9;
+  color: #f0f0f0;
+  text-align: center;
+  padding: 0 2rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.3rem;
+  opacity: 0.8;
+  animation: pulse 2s infinite;
+  cursor: pointer;
+  letter-spacing: 1px;
+  color: #e0e0e0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Slide indicators */
+.slide-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.8rem;
+  z-index: 20;
+}
+
+.slide-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.slide-dot.active {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Pulse animation for scroll indicator */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Waving hand animation */
+.waving-hand {
+  display: inline-block;
+  margin-left: 0.5rem;
+  animation: wave 2.5s infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* Enhanced Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.popup-container {
+  background: transparent;
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  border-radius: 8px;
+  padding: 40px;
+  width: 95%;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow: hidden;
+  box-shadow: 
+    0 0 30px rgba(0, 245, 255, 0.3),
+    0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.popup-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 245, 255, 0.5),
+    transparent
+  );
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+}
+
+.popup-title {
+  color: #00f5ff;
+  font-size: 28px;
+  font-weight: 300;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+}
+
+.popup-close {
+  background: rgba(0, 245, 255, 0.1);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+  color: #00f5ff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.popup-close:hover {
+  background: rgba(0, 245, 255, 0.2);
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
+}
+
+.popup-content {
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  text-align: justify;
+}
+
+.popup-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.popup-content::-webkit-scrollbar-track {
+  background: rgba(0, 245, 255, 0.1);
+  border-radius: 3px;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 255, 0.4);
+  border-radius: 3px;
+}
+
+.popup-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 245, 255, 0.6);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 30px rgba(0, 245, 255, 0.2),
+      0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 50px rgba(0, 245, 255, 0.4),
+      0 10px 40px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.popup-container {
+  animation: slideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), glow 3s ease-in-out infinite;
+}
+
+/* Mobile fixes - targeted adjustments */
+@media (max-width: 768px) {
+  .home-slide {
+    padding: 80px 20px 100px;
+  }
+  
+  .hero-content {
+    max-width: 90%;
+    padding: 0 1rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(2.2rem, 6vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-content-text {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-lottie {
+    margin-bottom: 1.5rem;
+    max-width: 200px;
+    max-height: 200px;
+  }
+  
+  .hero-lottie > * {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .scroll-indicator {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+  }
+
+  /* Mobile popup adjustments */
+  .popup-container {
+    padding: 25px;
+    margin: 20px;
+    width: calc(100% - 40px);
+    max-height: 85vh;
+  }
+
+  .popup-title {
+    font-size: 24px;
+  }
+
+  .popup-content {
+    font-size: 14px;
+    max-height: 65vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-slide {
+    padding: 70px 15px 90px;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+  
+  .hero-content-text {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+  }
+  
+  .hero-lottie {
+    max-width: 150px;
+    max-height: 150px;
+  }
+
+  .popup-container {
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .popup-title {
+    font-size: 22px;
+  }
+
+  .popup-content {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 375px) {
+  .home-slide {
+    padding: 60px 10px 80px;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 6vw, 1.5rem);
+  }
+  
+  .hero-lottie {
+    max-width: 120px;
+    max-height: 120px;
+  }
+
+  .popup-container {
+    padding: 15px;
+    margin: 10px;
+    width: calc(100% - 20px);
+  }
+}
+
+@media (max-height: 600px) {
+  .hero-lottie {
+    max-width: 100px;
+    max-height: 100px;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-title {
+    margin-bottom: 0.8rem;
+  }
+  
+  .hero-subtitle {
+    margin-bottom: 1rem;
+  }
+
+  .popup-container {
+    padding: 20px;
+    max-height: 90vh;
+  }
+
+  .popup-content {
+    max-height: 55vh;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .home-slide {
+    padding: 50px 20px;
+  }
+  
+  .hero-content {
+    max-width: 95%;
+  }
+  
+  .hero-lottie {
+    max-width: 80px;
+    max-height: 80px;
+    margin-bottom: 0.8rem;
+  }
+
+  .popup-container {
+    padding: 15px;
+    max-height: 95vh;
+  }
+
+  .popup-content {
+    max-height: 50vh;
+    font-size: 12px;
+  }
+}
+
+/* Mobile popup overlay */
+@media (max-width: 768px) {
+  .home-section {
+    position: relative;
+  }
+  
+  /* Ensure popup is above everything on mobile */
+  .home-section > div:last-child {
+    z-index: 1000;
+  }
+}
+
+/* Prevent body scroll when popup is open */
+body.popup-open {
+  overflow: hidden;
+}

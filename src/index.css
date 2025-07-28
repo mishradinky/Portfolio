@@ -1,0 +1,258 @@
+/* Global Mobile Layout Fix - Ensures perfect screen fit */
+
+/* Reset everything */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Force viewport sizing */
+.viewport {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.vertical-scroll {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.vertical-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Perfect screen fit sections */
+.scroll-section {
+  width: 100vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mobile content container */
+.mobile-fit-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px 100px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Robot positioning */
+.robot-wrapper {
+  flex-shrink: 0;
+  max-width: 90%;
+  max-height: 35vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.robot-wrapper > * {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Content positioning */
+.content-wrapper {
+  flex: 1;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow-y: auto;
+  padding: 0 10px;
+}
+
+/* Typography scaling */
+.main-title {
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  margin-bottom: 10px;
+  line-height: 1.2;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 4vw, 1.5rem);
+  margin-bottom: 15px;
+  line-height: 1.3;
+  opacity: 0.9;
+}
+
+.description {
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  line-height: 1.4;
+  margin-bottom: 15px;
+  max-width: 100%;
+}
+
+/* Grid layouts */
+.mobile-grid {
+  width: 100%;
+  max-width: 350px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+/* Card styling */
+.mobile-card {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  line-height: 1.3;
+}
+
+/* Button sizing */
+.action-button {
+  padding: 12px 24px;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
+  border-radius: 25px;
+  min-height: 44px;
+  margin: 10px 0;
+}
+
+/* Ensure no overflow */
+* {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Image/animation containment */
+img, svg, canvas, video, lottie-player {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Touch targets */
+button, a, [role="button"], [tabindex] {
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mobile-fit-container {
+    padding: 70px 15px 90px;
+  }
+  
+  .robot-wrapper {
+    max-height: 30vh;
+  }
+  
+  .content-wrapper {
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-fit-container {
+    padding: 60px 10px 80px;
+  }
+  
+  .robot-wrapper {
+    max-height: 25vh;
+  }
+  
+  .content-wrapper {
+    max-width: 320px;
+  }
+  
+  .main-title {
+    font-size: clamp(1.5rem, 7vw, 2.2rem);
+  }
+}
+
+@media (max-width: 375px) {
+  .mobile-fit-container {
+    padding: 50px 8px 70px;
+  }
+  
+  .content-wrapper {
+    max-width: 300px;
+  }
+}
+
+/* Landscape mode */
+@media (max-height: 500px) and (orientation: landscape) {
+  .mobile-fit-container {
+    flex-direction: row;
+    padding: 40px 15px;
+  }
+  
+  .robot-wrapper {
+    max-width: 35%;
+    max-height: 60vh;
+    margin-bottom: 0;
+    margin-right: 15px;
+  }
+  
+  .content-wrapper {
+    max-width: 60%;
+    max-height: 80vh;
+  }
+}
+
+/* Ensure proper scroll behavior */
+.scroll-section {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Prevent text overflow */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Hide scrollbars */
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}

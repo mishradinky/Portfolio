@@ -1,0 +1,289 @@
+/* Unified Mobile Layout - Perfect Screen Fit for All Sections */
+
+/* Base mobile container for all sections */
+.mobile-section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 20px 100px;
+  box-sizing: border-box;
+}
+
+/* Content wrapper - ensures perfect fit */
+.mobile-content {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Robot positioning - consistent across all sections */
+.mobile-robot {
+  flex-shrink: 0;
+  max-width: 180px;
+  max-height: 180px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-robot > * {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Typography system - consistent sizing */
+.mobile-title {
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  color: white;
+  margin-bottom: 12px;
+  line-height: 1.2;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.mobile-subtitle {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  color: #00f5ff;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.mobile-description {
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  color: #e0e0e0;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+/* Button styling */
+.mobile-button {
+  background: rgba(0, 245, 255, 0.2);
+  border: 1px solid rgba(0, 245, 255, 0.5);
+  color: #00f5ff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+.mobile-button:hover {
+  background: rgba(0, 245, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Content container for detailed views */
+.mobile-detail-container {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  overflow-y: auto;
+  padding: 0 10px;
+}
+
+.mobile-detail-header {
+  margin-bottom: 25px;
+}
+
+.mobile-detail-title {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  color: white;
+  margin-bottom: 10px;
+}
+
+/* Card system */
+.mobile-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.mobile-card-title {
+  color: #00f5ff;
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.mobile-card-subtitle {
+  color: white;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  margin-bottom: 5px;
+}
+
+.mobile-card-text {
+  color: #e0e0e0;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  line-height: 1.4;
+}
+
+/* Grid system */
+.mobile-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+/* Form styling */
+.mobile-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mobile-form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.mobile-form-label {
+  color: #00f5ff;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+.mobile-form-input,
+.mobile-form-textarea {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  color: white;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+}
+
+.mobile-form-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mobile-section {
+    padding: 70px 15px 90px;
+  }
+  
+  .mobile-content,
+  .mobile-detail-container {
+    max-width: 350px;
+  }
+  
+  .mobile-robot {
+    max-width: 150px;
+    max-height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-section {
+    padding: 60px 10px 80px;
+  }
+  
+  .mobile-content,
+  .mobile-detail-container {
+    max-width: 320px;
+  }
+  
+  .mobile-robot {
+    max-width: 120px;
+    max-height: 120px;
+  }
+}
+
+@media (max-width: 375px) {
+  .mobile-section {
+    padding: 50px 8px 70px;
+  }
+  
+  .mobile-content,
+  .mobile-detail-container {
+    max-width: 300px;
+  }
+}
+
+@media (max-height: 600px) {
+  .mobile-robot {
+    max-width: 100px;
+    max-height: 100px;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .mobile-section {
+    flex-direction: row;
+    padding: 40px 20px;
+  }
+  
+  .mobile-content,
+  .mobile-detail-container {
+    flex-direction: row;
+    max-width: 100%;
+    gap: 20px;
+  }
+  
+  .mobile-robot {
+    max-width: 120px;
+    max-height: 120px;
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+}
+
+/* Ensure perfect fit */
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Prevent overflow */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Touch improvements */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Ensure images fit */
+img, svg, canvas, video {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}

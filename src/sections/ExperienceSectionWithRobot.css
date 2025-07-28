@@ -1,0 +1,313 @@
+/* ExperienceSectionWithRobot.css - Updated with Popup Modal Styles */
+
+.experience-section-with-robot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.experience-section-with-robot::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(0, 245, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 245, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(0, 245, 255, 0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.experience-intro {
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Popup Modal Styles */
+.experience-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.experience-popup-container {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 245, 255, 0.3);
+}
+
+.experience-popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 245, 255, 0.3);
+}
+
+.experience-popup-title {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.experience-popup-close {
+  background: rgba(0, 245, 255, 0.2);
+  border: 1px solid rgba(0, 245, 255, 0.5);
+  color: #00f5ff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.experience-popup-close:hover {
+  background: rgba(0, 245, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.experience-popup-content {
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+/* Popup Scrollbar */
+.experience-popup-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.experience-popup-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.experience-popup-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 255, 0.5);
+  border-radius: 4px;
+}
+
+.experience-popup-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 245, 255, 0.7);
+}
+
+/* Experience Timeline Styles */
+.experience-timeline {
+  position: relative;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #00f5ff, transparent);
+}
+
+.experience-card {
+  position: relative;
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.experience-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.experience-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.experience-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  left: -38px;
+  top: 30px;
+  width: 12px;
+  height: 12px;
+  background: #00f5ff;
+  border-radius: 50%;
+  border: 3px solid #0a0a0a;
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.5);
+}
+
+/* Popup Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile fixes - targeted adjustments */
+@media (max-width: 768px) {
+  .experience-intro {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 30px;
+    padding: 80px 20px 100px;
+  }
+  
+  .experience-intro > div:last-child {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .experience-intro h1 {
+    font-size: clamp(2rem, 6vw, 2.8rem) !important;
+  }
+  
+  .experience-intro p {
+    font-size: clamp(1.1rem, 3vw, 1.3rem) !important;
+  }
+  
+  .experience-popup-container {
+    padding: 20px;
+    margin: 20px;
+    max-height: 95vh;
+  }
+  
+  .experience-popup-title {
+    font-size: 2rem;
+  }
+  
+  .experience-card {
+    padding: 20px !important;
+    margin: 0 10px 20px;
+  }
+  
+  .experience-card h3 {
+    font-size: clamp(1.1rem, 3vw, 1.3rem) !important;
+  }
+  
+  .experience-card p {
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem) !important;
+  }
+  
+  .experience-timeline::before {
+    left: 20px;
+  }
+  
+  .experience-card::before {
+    left: -28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-intro {
+    padding: 70px 15px 90px;
+  }
+  
+  .experience-intro h1 {
+    font-size: clamp(1.6rem, 7vw, 2.2rem) !important;
+  }
+  
+  .experience-intro p {
+    font-size: clamp(1rem, 4vw, 1.2rem) !important;
+  }
+  
+  .experience-popup-container {
+    padding: 15px;
+    margin: 10px;
+    max-height: 95vh;
+  }
+  
+  .experience-card {
+    padding: 15px !important;
+    margin: 0 5px 15px;
+  }
+  
+  .hero-lottie {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 375px) {
+  .experience-intro,
+  .experience-popup-container {
+    padding: 60px 10px 80px;
+  }
+  
+  .experience-card {
+    padding: 12px !important;
+  }
+  
+  .experience-card::before {
+    left: -25px;
+    width: 8px;
+    height: 8px;
+  }
+}
+
+@media (max-height: 600px) {
+  .experience-popup-container {
+    padding: 60px 15px 80px;
+    max-height: 95vh;
+  }
+  
+  .experience-card {
+    padding: 15px !important;
+  }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .experience-intro,
+  .experience-popup-container {
+    padding: 50px 20px;
+  }
+}
