@@ -67,7 +67,7 @@ function LoadingOverlay() {
 
 // Main 360-degree model component
 export function MainModel(props) {
-  const { scene } = useGLTF('./models/main.glb')
+  const { scene } = useGLTF(import.meta.env.BASE_URL + './models/main.glb')
   
   if (!scene) {
     console.error('Main GLB model failed to load properly')
@@ -233,4 +233,4 @@ export default function Scene({ scrollProgress = 0 }) {
 }
 
 // Preload the main model
-useGLTF.preload('./models/main.glb')
+useGLTF.preload(import.meta.env.BASE_URL +'./models/main.glb')

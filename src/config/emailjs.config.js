@@ -1,9 +1,9 @@
 // EmailJS Configuration using environment variables
 
 export const EMAILJS_CONFIG = {
-  SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID || 'service_auewxim',
-  TEMPLATE_ID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_x8vgm8l',
-  PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'DzGQhkYsWaTOylRTl',
+  SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  TEMPLATE_ID: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
 };
 
 // Check if EmailJS is properly configured
