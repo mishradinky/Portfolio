@@ -40,25 +40,25 @@ const ExperienceSectionWithRobot = ({ currentSection, sectionIndex }) => {
       title: "Graduate Assistant (Data Engineer & Teaching Assistant)",
       company: "Cleveland State University",
       duration: "April 2024 - May 2025",
-      points: [
+      description: 
         "Delivered comprehensive academic support by automating grading analytics for 150+ students while mentoring 40+ peers in programming and data engineering concepts, showcasing my ability to translate complex technical knowledge into accessible learning experiences. Through collaborative leadership, I co-created innovative teaching resources and prototyped a multi-agent website framework, demonstrating my technical versatility and passion for knowledge sharing"
-      ]
+  
     },
     {
       title: "Data Engineer",
       company: "LTIMindtree (Formerly Mindtree Ltd)",
       duration: "Aug 2021 - Aug 2023",
-      points: [
+      description:
         "Architected and delivered enterprise-scale data solutions across Azure Synapse, PySpark, and DevOps ecosystems, managing 10TB+ of multi-domain data while achieving 40% performance improvements and 60% faster deployment cycles through strategic automation. By deeply understanding IoT analytics business requirements, I designed cost-effective data warehousing solutions and implemented robust SLAs that ensured compliance and data quality, while my cross-functional collaboration with product managers and data scientists drove actionable insights and accelerated client validation processes by 30%. Through meticulous monitoring and optimization, I boosted Azure Data Pipeline performance by an additional 30% while achieving a remarkable 75% reduction in logical and PySpark notebook errors through comprehensive unit testing and data validation frameworks. My proactive approach included developing PowerShell scripts for systematic cluster-linked notebook identification, designing monthly data quality assessments via Synapse notebooks, and generating weekly data integrity reports using Tableau that increased stakeholder confidence and enabled proactive issue resolution. Leveraging agile methodologies and cost-effective Spark cluster management, my technical expertise spanning distributed computing, synthetic data generation, and petabyte-scale infrastructure enabled advanced analytics initiatives that directly supported strategic business decisions while maintaining optimal performance and operational transparency."
-      ]
+    
     },
     {
       title: "Jr. ML Engineer",
       company: "Yotta Data Center",
       duration: "Dec 2019 - July 2021",
-      points: [
+      description:
         "Transformed operational efficiency by building Jenkins CI/CD pipelines that increased deployment frequency by 35% while strategically migrating AWS data to cost-effective SQL Server solutions for real-time KPI generation. Through proactive problem-solving and cross-functional collaboration, I reduced system downtime by 20% and established data governance best practices that balanced business impact with privacy compliance, demonstrating my ability to understand both technical requirements and business constraints."
-      ]
+      
     }
   ];
 
