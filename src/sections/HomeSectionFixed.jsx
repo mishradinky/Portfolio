@@ -30,18 +30,9 @@ const HomeSection = ({ onSlideChange, currentSection, sectionIndex }) => {
   }, [showPopup]);
 
   const fullBio = [
-    "A data engineer by profession and a curious explorer at heart. With experience across data engineering, DevOps, analytics, and machine learning, I've worked in diverse industries like finance, healthcare, retail, and IoT.",
-    
-    "I specialize in building scalable pipelines, automating workflows, and optimizing cloud-based data systems using tools like Python, PySpark, SQL, Airflow, Databricks, AWS, Azure, and GCP. I hold 18+ certifications including Databricks Data Engineer Associate, Generative AI Engineering, and Google Professional Data Engineer.",
-    
-    "Whether I'm leading a project or mentoring peers through ACM-W or Women in AI, I thrive on turning data into impact and simplifying complex problems with practical solutions.",
-    
-    "Outside of tech, I'm a big believer in balancing logic with a little bit of magic. I escape into books (especially the ones that transport me to other worlds), and I'm always up for an adventure be it hiking, exploring hidden gems, or taking spontaneous trips whenever the wallet allows it.",
-    
-    "Dancing is my go-to reboot button, and coffee? Let's just say I can rate a city based on its espresso game.",
-    
+    "Ingeniously practical engineer who turns data into something that actually makes sense. I somehow convince messy datasets to behave across various domains, delivering automated workflows and tuned solutions and also adapted AI to build the future.",
+    "When not pretending to have my time management skills perfectly dialed in or constantly leveling up with new skills (because growth is addictive like that), you'll find me binge-watching anime (Itachi Uchiha is peak character development, fight me), lost in books that help me escape reality for a while, dancing my stress away, or exploring new places with a coffee shop rating system that would make food critics jealous.",
     "I enjoy presenting ideas, crafting elevator pitches, and organizing initiatives that bring people together. My strengths lie in time management, sharp problem-solving, and adaptability whether it's tuning a query, managing a deadline, or stepping up for something new.",
-    
     "Tech is my playground, and I love adding both structure and soul to every project I take on."
   ];
 
