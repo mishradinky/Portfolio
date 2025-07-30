@@ -1,42 +1,39 @@
-name: Deploy 3D Portfolio to GitHub Pages
+name: Build and Deploy Portfolio
 
 on:
   push:
     branches:
       - main
 
-# Ensure the built‑in token can write your code and your pages
 permissions:
-  contents: write      # allows checkout to push commits
-  pages: write         # allows deploying to GitHub Pages
+  contents: write
+  pages: write
   id-token: write
 
 jobs:
-  build_and_deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code 
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0           # full clone, required for creating new commits
-          persist-credentials: true # keep GITHUB_TOKEN for subsequent steps
-
+        
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Project
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build project
         run: npm run build
-
+        
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          user_name: github-actions[bot]                       # ensures commits have a valid author
-          user_email: github-actions[bot]@users.noreply.github.com
+          force_orphan: true  # Creates clean gh-pages branch
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
