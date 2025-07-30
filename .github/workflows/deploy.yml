@@ -1,23 +1,23 @@
-name: Build and Deploy to GitHub Pages
+name: Build and Deploy Portfolio
 
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
@@ -35,6 +35,20 @@ jobs:
         
       - name: Build project
         run: npm run build
+        env:
+          NODE_ENV: production
+        
+      # Debug step to verify build output
+      - name: Verify build output
+        run: |
+          echo "=== Build completed, checking output ==="
+          ls -la
+          echo "=== Contents of dist directory ==="
+          ls -la dist/
+          echo "=== Size of build artifacts ==="
+          du -sh dist/
+          echo "=== Sample files in dist ==="
+          find dist/ -type f | head -10
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -44,7 +58,6 @@ jobs:
         with:
           path: './dist'
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
