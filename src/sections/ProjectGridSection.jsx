@@ -231,7 +231,7 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'flex-start',
-          textAlign: 'left'
+          textAlign: 'center'
         }}>
           <h1 style={{
             color: '#ffffff',
@@ -363,7 +363,7 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
                         whiteSpace: 'normal',
                         wordWrap: 'break-word',
                         wordBreak: 'break-word',
-                        textAlign: 'left',
+                        textAlign: 'center',
                       }}>
                         {project.title}
                       </h3>
