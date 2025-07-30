@@ -368,7 +368,7 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
                         {project.title}
                       </h3>
                       <a 
-                        href={`https://github.com/mishradinky/project-${project.id}`}
+                        href={project.githubUrl || `https://github.com/mishradinky`}
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
