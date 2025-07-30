@@ -5,15 +5,24 @@ on:
     branches:
       - main
 
+# Ensure the built‑in token can write your code and your pages
+permissions:
+  contents: write      # allows checkout to push commits
+  pages: write         # allows deploying to GitHub Pages
+  id-token: write
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout code 
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0           # full clone, required for creating new commits
+          persist-credentials: true # keep GITHUB_TOKEN for subsequent steps
 
-      - name: Setup Node.js ⚙️
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
@@ -29,3 +38,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          user_name: github-actions[bot]                       # ensures commits have a valid author
+          user_email: github-actions[bot]@users.noreply.github.com
