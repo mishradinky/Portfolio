@@ -41,8 +41,7 @@ const ExperienceSectionWithRobot = ({ currentSection, sectionIndex }) => {
       company: "Cleveland State University",
       duration: "April 2024 - May 2025",
       description: 
-        "Delivered comprehensive academic support by automating grading analytics for 150+ students while mentoring 40+ peers in programming and data engineering concepts, showcasing my ability to translate complex technical knowledge into accessible learning experiences. Through collaborative leadership, I co-created innovative teaching resources and prototyped a multi-agent website framework, demonstrating my technical versatility and passion for knowledge sharing"
-  
+        "Delivered comprehensive academic support by automating grading analytics for 150+ students while mentoring 40+ peers in programming and data engineering concepts, showcasing my ability to translate complex technical knowledge into accessible learning experiences. Through collaborative leadership, I co-created innovative teaching resources and prototyped a multi-agent website framework, demonstrating my technical versatility and passion for knowledge sharing."
     },
     {
       title: "Data Engineer",
@@ -50,7 +49,6 @@ const ExperienceSectionWithRobot = ({ currentSection, sectionIndex }) => {
       duration: "Aug 2021 - Aug 2023",
       description:
         "Architected and delivered enterprise-scale data solutions across Azure Synapse, PySpark, and DevOps ecosystems, managing 10TB+ of multi-domain data while achieving 40% performance improvements and 60% faster deployment cycles through strategic automation. By deeply understanding IoT analytics business requirements, I designed cost-effective data warehousing solutions and implemented robust SLAs that ensured compliance and data quality, while my cross-functional collaboration with product managers and data scientists drove actionable insights and accelerated client validation processes by 30%. Through meticulous monitoring and optimization, I boosted Azure Data Pipeline performance by an additional 30% while achieving a remarkable 75% reduction in logical and PySpark notebook errors through comprehensive unit testing and data validation frameworks. My proactive approach included developing PowerShell scripts for systematic cluster-linked notebook identification, designing monthly data quality assessments via Synapse notebooks, and generating weekly data integrity reports using Tableau that increased stakeholder confidence and enabled proactive issue resolution. Leveraging agile methodologies and cost-effective Spark cluster management, my technical expertise spanning distributed computing, synthetic data generation, and petabyte-scale infrastructure enabled advanced analytics initiatives that directly supported strategic business decisions while maintaining optimal performance and operational transparency."
-    
     },
     {
       title: "Jr. ML Engineer",
@@ -58,7 +56,6 @@ const ExperienceSectionWithRobot = ({ currentSection, sectionIndex }) => {
       duration: "Dec 2019 - July 2021",
       description:
         "Transformed operational efficiency by building Jenkins CI/CD pipelines that increased deployment frequency by 35% while strategically migrating AWS data to cost-effective SQL Server solutions for real-time KPI generation. Through proactive problem-solving and cross-functional collaboration, I reduced system downtime by 20% and established data governance best practices that balanced business impact with privacy compliance, demonstrating my ability to understand both technical requirements and business constraints."
-      
     }
   ];
 
@@ -184,7 +181,7 @@ const ExperienceSectionWithRobot = ({ currentSection, sectionIndex }) => {
         </div>
       </div>
 
-      {/* Popup Modal - Same structure as Skills */}
+      {/* Popup Modal */}
       {showPopup && (
         <div className="popup-overlay" onClick={handleClosePopup}>
           <div className="popup-container" onClick={(e) => e.stopPropagation()}>
@@ -236,33 +233,16 @@ const ExperienceSectionWithRobot = ({ currentSection, sectionIndex }) => {
                       {exp.duration}
                     </p>
                     
-                    <ul style={{
-                      listStyle: 'none',
-                      padding: 0,
+                    {/* Fixed description section - no bullets */}
+                    <p style={{
+                      color: '#cccccc',
+                      fontSize: '14px',
+                      lineHeight: '1.6',
+                      textAlign: 'justify',
                       margin: 0
                     }}>
-                      {exp.points.map((point, pointIndex) => (
-                        <li key={pointIndex} style={{
-                          color: '#cccccc',
-                          fontSize: '14px',
-                          lineHeight: '1.6',
-                          marginBottom: '8px',
-                          paddingLeft: '20px',
-                          position: 'relative'
-                        }}>
-                          <span style={{
-                            position: 'absolute',
-                            left: 0,
-                            top: '6px',
-                            width: '6px',
-                            height: '6px',
-                            background: '#00f5ff',
-                            borderRadius: '50%'
-                          }} />
-                          {point}
-                        </li>
-                      ))}
-                    </ul>
+                      {exp.description}
+                    </p>
                   </div>
                 ))}
               </div>
