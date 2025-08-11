@@ -30,10 +30,10 @@ const HomeSection = ({ onSlideChange, currentSection, sectionIndex }) => {
   }, [showPopup]);
 
   const fullBio = [
-    "Ingeniously practical engineer who turns data into something that actually makes sense. I somehow convince messy datasets to behave across various domains, delivering automated workflows and tuned solutions and also adapted AI to build the future.",
-    "When not pretending to have my time management skills perfectly dialed in or constantly leveling up with new skills (because growth is addictive like that), you'll find me binge-watching anime (Itachi Uchiha is peak character development, fight me), lost in books that help me escape reality for a while, dancing my stress away, or exploring new places with a coffee shop rating system that would make food critics jealous.",
-    "I enjoy presenting ideas, crafting elevator pitches, and organizing initiatives that bring people together. My strengths lie in time management, sharp problem-solving, and adaptability whether it's tuning a query, managing a deadline, or stepping up for something new.",
-    "Tech is my playground, and I love adding both structure and soul to every project I take on."
+    "Heya, I'm Dinky Mishra 👋 a Data and ML engineer with 5+ years of experience building scalable AI solutions and production-grade systems. currently based in San Francisco,USA with a Master's in Computer Science from Cleveland State University."
+"I specialize in building production-grade data architectures, ML pipelines, and GenAI applications that handle 1TB+ datasets using python, pyspark, databricks, kafka, and cloud platforms (AWS, Azure, GCP). With 18+ certifications and experience across finance, healthcare, retail, and IoT, I've consulted C-suite executives and delivered big data solutions processing 70+ million data points while accelerating decision-making by 40%."
+"Beyond tech, I'm Director of ACM-W at Cleveland State University and a Women in AI volunteer. When I'm not building scalable systems, you'll find me exploring new cities, dancing, or rating coffee shops based on their espresso game."
+"This site showcases my journey through data engineering, machine learning, and the intersection of AI and human impact."
   ];
 
   const [isMobile, setIsMobile] = useState(false);
