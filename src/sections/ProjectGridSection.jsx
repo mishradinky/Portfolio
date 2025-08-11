@@ -2,14 +2,25 @@ import React, { useState, useEffect } from 'react';
 import WavingRobotLottie from '../components/WavingRobotLottie';
 
 const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }) => {
+  const [showProjects, setShowProjects] = useState(false);
   const [flippedCards, setFlippedCards] = useState([]);
 
-  // Reset flipped cards when navigating away
+  // Reset states when navigating away from this section
   useEffect(() => {
     if (currentSection !== sectionIndex) {
+      setShowProjects(false);
       setFlippedCards([]);
     }
   }, [currentSection, sectionIndex]);
+
+  const handleRobotClick = () => {
+    setShowProjects(true);
+  };
+
+  const handleBackToIntro = () => {
+    setShowProjects(false);
+    setFlippedCards([]);
+  };
 
   const handleCardFlip = (projectId) => {
     setFlippedCards(prev => 
@@ -95,9 +106,8 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
   ];
 
   // Project Card Component
-  const ProjectCard = ({ project, index }) => {
+  const ProjectCard = ({ project }) => {
     const isFlipped = flippedCards.includes(project.id);
-    const isEven = index % 2 === 0;
     
     return (
       <div 
@@ -113,7 +123,7 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
           cursor: 'pointer',
           minHeight: '380px',
           width: '100%',
-          maxWidth: '550px',
+          maxWidth: '520px',
           margin: '0 auto',
           position: 'relative',
           perspective: '1000px',
@@ -185,7 +195,7 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
             <div style={{ paddingTop: '20px' }}>
               <h3 style={{
                 color: '#ffffff',
-                fontSize: '26px',
+                fontSize: '24px',
                 fontWeight: '700',
                 lineHeight: '1.3',
                 margin: '0 0 24px 0',
@@ -418,32 +428,134 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
     );
   };
 
-  return (
-    <div className="project-grid-section" style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      minHeight: '100vh',
-      position: 'relative',
-      padding: '60px 20px 40px 20px'
-    }}>
-      {/* Header Section */}
-      <div style={{
+  if (showProjects) {
+    // Projects View - Full page, no cutting
+    return (
+      <div className="projects-view" style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        textAlign: 'center',
-        marginBottom: '60px',
-        maxWidth: '800px'
+        minHeight: '100vh',
+        padding: '40px 20px',
+        position: 'relative',
+        width: '100%',
+        overflow: 'visible'
       }}>
-        {/* Robot with speech bubble */}
+        {/* Back Button */}
+        <button 
+          onClick={handleBackToIntro}
+          style={{
+            position: 'fixed',
+            top: '20px',
+            left: '20px',
+            background: 'rgba(0, 245, 255, 0.2)',
+            border: '2px solid rgba(0, 245, 255, 0.5)',
+            borderRadius: '50%',
+            width: '50px',
+            height: '50px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            color: '#00f5ff',
+            fontSize: '24px',
+            fontWeight: 'bold',
+            zIndex: 1000,
+            transition: 'all 0.3s ease',
+            backdropFilter: 'blur(10px)'
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.background = 'rgba(0, 245, 255, 0.3)';
+            e.target.style.transform = 'scale(1.1)';
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.background = 'rgba(0, 245, 255, 0.2)';
+            e.target.style.transform = 'scale(1)';
+          }}
+        >
+          ←
+        </button>
+
+        {/* Header */}
+        <div style={{
+          textAlign: 'center',
+          marginBottom: '50px',
+          paddingTop: '20px'
+        }}>
+          <h1 style={{
+            background: 'linear-gradient(135deg, #ffffff 0%, #00f5ff 50%, #9333ea 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+            fontWeight: '800',
+            marginBottom: '20px',
+            letterSpacing: '-0.02em',
+            lineHeight: '1.1'
+          }}>
+            All My Projects
+          </h1>
+          
+          <p style={{
+            color: 'rgba(255, 255, 255, 0.8)',
+            fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
+            lineHeight: '1.6',
+            maxWidth: '600px',
+            margin: '0 auto'
+          }}>
+            {projects.length} projects showcasing different technical challenges. Click any card to see details.
+          </p>
+        </div>
+
+        {/* Projects Grid - 2 per row */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
+          gap: '40px',
+          width: '100%',
+          maxWidth: '1200px',
+          padding: '0 20px'
+        }}>
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
+
+        {/* Bottom spacing */}
+        <div style={{ height: '60px' }} />
+      </div>
+    );
+  }
+
+  // Intro View - Original landing page
+  return (
+    <div className="project-grid-section" style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      minHeight: '100vh',
+      position: 'relative'
+    }}>
+      <div className="project-intro" style={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '40px',
+        maxWidth: '1200px',
+        width: '100%',
+        padding: '20px',
+        position: 'relative',
+        zIndex: 1
+      }}>
+        {/* Robot section */}
         <div style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          marginBottom: '30px'
+          justifyContent: 'center'
         }}>
+          {/* Thinking bubble */}
           <div style={{
             background: 'rgba(255, 255, 255, 0.12)',
             border: '2px solid rgba(0, 245, 255, 0.6)',
@@ -494,7 +606,7 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
                 letterSpacing: '1px',
                 textShadow: '0 0 10px rgba(0, 245, 255, 0.5)'
               }}>
-                Here are my projects - scroll to explore!
+                Hey, it's me again - Dinky!
               </span>
             </div>
             <div style={{
@@ -511,51 +623,84 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
             }} />
           </div>
           
-          <WavingRobotLottie width={200} height={200} />
+          <div 
+            className="hero-lottie" 
+            onClick={handleRobotClick} 
+            style={{ 
+              cursor: 'pointer',
+              transition: 'transform 0.3s ease',
+              filter: 'drop-shadow(0 0 20px rgba(0, 245, 255, 0.3))'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+          >
+            <WavingRobotLottie width={350} height={350} />
+          </div>
         </div>
 
-        <h1 style={{
-          background: 'linear-gradient(135deg, #ffffff 0%, #00f5ff 50%, #9333ea 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-          fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-          fontWeight: '800',
-          marginBottom: '20px',
-          letterSpacing: '-0.02em',
-          lineHeight: '1.1',
-          textShadow: '0 0 30px rgba(0, 245, 255, 0.3)'
+        {/* Welcome text */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          textAlign: 'left'
         }}>
-          My Projects
-        </h1>
-        
-        <p style={{
-          color: 'rgba(255, 255, 255, 0.8)',
-          fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
-          lineHeight: '1.6',
-          maxWidth: '600px'
-        }}>
-          Each project showcases different technical challenges I've solved. 
-          Click any card to see the problem, solution, and results.
-        </p>
+          <h1 style={{
+            background: 'linear-gradient(135deg, #ffffff 0%, #00f5ff 50%, #9333ea 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+            fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+            fontWeight: '800',
+            marginBottom: '15px',
+            letterSpacing: '-0.02em',
+            lineHeight: '1.1',
+            textShadow: '0 0 30px rgba(0, 245, 255, 0.3)'
+          }}>
+            Explore My Projects
+          </h1>
+          <p style={{
+            color: 'rgba(0, 245, 255, 0.9)',
+            fontSize: 'clamp(1.1rem, 3vw, 1.5rem)',
+            marginBottom: '20px',
+            fontWeight: '500',
+            textShadow: '0 0 15px rgba(0, 245, 255, 0.4)'
+          }}>
+            Click the robo to view all projects
+          </p>
+          
+          {/* Professional CTA button */}
+          <button
+            onClick={handleRobotClick}
+            style={{
+              background: 'linear-gradient(135deg, #00f5ff 0%, #9333ea 100%)',
+              border: 'none',
+              borderRadius: '15px',
+              padding: '12px 24px',
+              color: '#ffffff',
+              fontSize: '16px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 8px 20px rgba(0, 245, 255, 0.3)'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.transform = 'translateY(-2px) scale(1.05)';
+              e.target.style.boxShadow = '0 12px 30px rgba(0, 245, 255, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.transform = 'translateY(0) scale(1)';
+              e.target.style.boxShadow = '0 8px 20px rgba(0, 245, 255, 0.3)';
+            }}
+          >
+            View All Projects
+          </button>
+        </div>
       </div>
-
-      {/* Projects Grid - 2 per row, scrollable */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
-        gap: '40px',
-        width: '100%',
-        maxWidth: '1200px',
-        padding: '0 20px'
-      }}>
-        {projects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
-      </div>
-
-      {/* Bottom spacing */}
-      <div style={{ height: '60px' }} />
     </div>
   );
 };
