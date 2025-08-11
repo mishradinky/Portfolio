@@ -401,4 +401,4 @@ export default function Scene({ modelPath = '/models/scene.glb' }) {
 }
 
 // Preload the model
-useGLTF.preload('/models/scene.glb');
+useGLTF.preload('/models/main.glb');
