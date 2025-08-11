@@ -172,7 +172,7 @@ function GroundPlane() {
 }
 
 // Main 3D Model Component
-function Model3D({ modelPath = '/models/scene.glb' }) {
+function Model3D({ modelPath = '/models/main.glb' }) {
   const group = useRef();
   const { scene, animations } = useGLTF(modelPath);
   const { actions } = useAnimations(animations, group);
@@ -319,7 +319,7 @@ function SceneContent({ modelPath }) {
 }
 
 // Main Scene Component
-export default function Scene({ modelPath = '/models/scene.glb' }) {
+export default function Scene({ modelPath = '/models/main.glb' }) {
   return (
     <div className="fixed inset-0 -z-10">
       {/* Gradient background */}
