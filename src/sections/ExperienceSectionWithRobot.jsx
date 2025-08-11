@@ -39,7 +39,7 @@ const ExperienceSectionWithRobot = ({ currentSection, sectionIndex }) => {
     {
       title: "Graduate Assistant (Data Engineer & Teaching Assistant)",
       company: "Cleveland State University",
-      duration: "April 2024 - May 2025",
+      duration: "August 2023 - May 2025",
       description: 
         "Delivered comprehensive academic support by automating grading analytics for 150+ students while mentoring 40+ peers in programming and data engineering concepts, showcasing my ability to translate complex technical knowledge into accessible learning experiences. Through collaborative leadership, I co-created innovative teaching resources and prototyped a multi-agent website framework, demonstrating my technical versatility and passion for knowledge sharing."
     },
