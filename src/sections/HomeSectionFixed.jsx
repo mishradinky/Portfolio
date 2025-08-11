@@ -30,9 +30,9 @@ const HomeSection = ({ onSlideChange, currentSection, sectionIndex }) => {
   }, [showPopup]);
 
   const fullBio = [
-    "Heya, I'm Dinky Mishra 👋 a Data and ML engineer with 5+ years of experience building scalable AI solutions and production-grade systems. currently based in San Francisco,USA with a Master's in Computer Science from Cleveland State University."
-"I specialize in building production-grade data architectures, ML pipelines, and GenAI applications that handle 1TB+ datasets using python, pyspark, databricks, kafka, and cloud platforms (AWS, Azure, GCP). With 18+ certifications and experience across finance, healthcare, retail, and IoT, I've consulted C-suite executives and delivered big data solutions processing 70+ million data points while accelerating decision-making by 40%."
-"Beyond tech, I'm Director of ACM-W at Cleveland State University and a Women in AI volunteer. When I'm not building scalable systems, you'll find me exploring new cities, dancing, or rating coffee shops based on their espresso game."
+    "Heya, I'm Dinky Mishra 👋 a Data and ML engineer with 5+ years of experience building scalable AI solutions and production-grade systems. currently based in San Francisco,USA with a Master's in Computer Science from Cleveland State University.",
+"I specialize in building production-grade data architectures, ML pipelines, and GenAI applications that handle 1TB+ datasets using python, pyspark, databricks, kafka, and cloud platforms (AWS, Azure, GCP). With 18+ certifications and experience across finance, healthcare, retail, and IoT, I've consulted C-suite executives and delivered big data solutions processing 70+ million data points while accelerating decision-making by 40%.",
+"Beyond tech, I'm Director of ACM-W at Cleveland State University and a Women in AI volunteer. When I'm not building scalable systems, you'll find me exploring new cities, dancing, or rating coffee shops based on their espresso game.",
 "This site showcases my journey through data engineering, machine learning, and the intersection of AI and human impact."
   ];
 
