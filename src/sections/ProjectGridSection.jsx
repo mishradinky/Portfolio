@@ -2,42 +2,14 @@ import React, { useState, useEffect } from 'react';
 import WavingRobotLottie from '../components/WavingRobotLottie';
 
 const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }) => {
-  const [showProjects, setShowProjects] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
   const [flippedCards, setFlippedCards] = useState([]);
 
-  // Prevent body scroll when popup is open
-  useEffect(() => {
-    if (showPopup) {
-      document.body.style.overflow = 'hidden';
-      document.body.classList.add('popup-open');
-    } else {
-      document.body.style.overflow = 'unset';
-      document.body.classList.remove('popup-open');
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-      document.body.classList.remove('popup-open');
-    };
-  }, [showPopup]);
-
-  // Reset to main screen when navigating away from this section
+  // Reset flipped cards when navigating away
   useEffect(() => {
     if (currentSection !== sectionIndex) {
-      setShowPopup(false);
       setFlippedCards([]);
     }
   }, [currentSection, sectionIndex]);
-
-  const handleRobotClick = () => {
-    setShowPopup(true);
-  };
-
-  const handleClosePopup = () => {
-    setShowPopup(false);
-    setFlippedCards([]);
-  };
 
   const handleCardFlip = (projectId) => {
     setFlippedCards(prev => 
@@ -50,108 +22,112 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
   const projects = [
     {
       id: 1,
-      title: "Automated Cost Optimization for Non-Prod Kubernetes Environments",
+      title: "Kubernetes Cost Optimization",
       category: "Cloud Infrastructure",
-      skills: ["Amazon EKS", "GitHub", "Docker Products", "Datadog", "Slack"],
-      problemStatement: "Non-production Kubernetes clusters running 24/7 were generating significant cloud costs (over $10K annually) with minimal weekend/night usage, impacting operational budgets without adding value during off-hours.",
-      solution: "Designed and implemented an intelligent automation solution using GitHub Actions for scheduling. Created scripts to systematically cordon nodes, drain workloads, and scale clusters to zero every Friday evening, with automatic Monday morning spin-up. Integrated comprehensive monitoring through Datadog and Slack alerting to ensure seamless service restoration and validate all components come online as expected.",
-      outcomes: "Achieved over $10K annual cost savings while maintaining 100% development productivity. Zero service disruption incidents and improved resource utilization efficiency across non-production environments."
+      skills: ["Amazon EKS", "GitHub Actions", "Docker", "Datadog"],
+      problemStatement: "Non-production Kubernetes clusters were running 24/7, generating over $10K in unnecessary costs during off-hours when no development work was happening.",
+      solution: "Built an intelligent automation system using GitHub Actions that automatically shuts down test clusters on weekends and evenings, then restarts them Monday morning.",
+      outcomes: "Saved over $10K annually while maintaining 100% developer productivity with zero service disruptions."
     },
     {
       id: 2,
-      title: "Analysis & Reporting System of Bank Account Details using Google Cloud Platform",
+      title: "Banking Data Analytics Platform",
       category: "Data Engineering",
-      skills: ["Google Cloud Platform", "Databricks Platform", "BigQuery", "PySpark", "SQL"],
-      problemStatement: "Financial institutions required efficient analysis and reporting capabilities for large-scale bank account data to support regulatory compliance and business intelligence initiatives.",
-      solution: "Developed a comprehensive big data solution leveraging GCP ecosystem. Applied advanced preprocessing and transformations on financial datasets using Databricks platform. Created efficient data pipelines utilizing BigQuery for analytical processing and implemented scalable reporting mechanisms for bank account analysis.",
-      outcomes: "Enhanced financial data analysis efficiency by 40%, contributing to faster informed decision-making in the banking sector and improved regulatory reporting capabilities."
+      skills: ["Google Cloud", "BigQuery", "PySpark", "Databricks"],
+      problemStatement: "Financial institutions needed efficient analysis of large-scale bank account data for regulatory compliance and business intelligence.",
+      solution: "Developed a comprehensive big data solution using GCP ecosystem with advanced data processing pipelines and real-time analytics capabilities.",
+      outcomes: "Enhanced financial data analysis efficiency by 40% and improved regulatory reporting capabilities significantly."
     },
     {
       id: 3,
-      title: "Big Data-Driven Medline Search & Retrieval System",
+      title: "Medical Literature Search Engine",
       category: "Healthcare Tech",
-      skills: ["Node.js", "Puppeteer", "MongoDB", "MySQL", "Next.js", "TF-IDF", "NLP"],
-      problemStatement: "Existing medical information retrieval system suffered from extreme latency (4,000+ per-document SQL calls) and poor search precision, making it ineffective for real-time medical research queries.",
-      solution: "Architected a comprehensive search optimization pipeline by scraping and indexing 1.4M terms from 4.5K MedlinePlus articles. Implemented advanced NLP preprocessing including tokenization, stemming, and lemmatization. Replaced inefficient query system with a single MySQL inverted-index lookup and enhanced ranking using TF-IDF with cosine similarity algorithms. Built responsive real-time search interface using Next.js frontend and Node.js/Express backend.",
-      outcomes: "Reduced search latency by 99% and boosted top-10 search precision by 30%, enabling healthcare professionals to access critical medical information instantly with significantly improved accuracy."
+      skills: ["Node.js", "MySQL", "Next.js", "NLP", "TF-IDF"],
+      problemStatement: "Medical professionals struggled with a slow search system that took forever to find relevant medical literature, making research inefficient.",
+      solution: "Created a lightning-fast search system that indexes 1.4 million medical terms and uses advanced algorithms to find exactly what doctors need.",
+      outcomes: "Reduced search time by 99% and improved search accuracy by 30%, helping healthcare professionals find critical information instantly."
     },
     {
       id: 4,
-      title: "Bitcoin Price Prediction Using Machine Learning and LLM",
+      title: "Bitcoin Price Prediction AI",
       category: "FinTech AI",
-      skills: ["Google Colab", "Python", "pandas", "scikit-learn", "NLTK", "spaCy", "Hugging Face Transformers"],
-      problemStatement: "Develop an accurate cryptocurrency price prediction system combining traditional financial indicators with sentiment analysis from social media to support informed investment decisions.",
-      solution: "Processed 10 years of historical Bitcoin data (2014–2024) and integrated Reddit sentiment analysis using advanced LLMs like FinBERT. Engineered comprehensive feature sets including moving averages, RSI, MACD, and sentiment-derived metrics. Optimized data processing pipelines for large-scale analysis using GPU-accelerated Google Colab, seamlessly merging structured financial data with unstructured social sentiment data.",
-      outcomes: "Achieved exceptional model performance with 2.3% MAE, 3.1% RMSE, and 87% classification accuracy for price movement predictions, delivering actionable insights for cryptocurrency market decision-making."
+      skills: ["Python", "Machine Learning", "FinBERT", "TensorFlow"],
+      problemStatement: "Cryptocurrency investors needed accurate price predictions that combined market data with social media sentiment for better investment decisions.",
+      solution: "Built an AI system that analyzes 10 years of Bitcoin data plus Reddit sentiment using advanced language models to predict price movements.",
+      outcomes: "Achieved 87% accuracy in predicting Bitcoin price movements, helping investors make more informed trading decisions."
     },
     {
       id: 5,
-      title: "Capstone Project: Case Study on Tamil Nadu's Plantation 2015-2016 using PySpark",
+      title: "Agricultural Data Analytics",
       category: "Agricultural Analytics",
-      skills: ["Databricks Platform", "PySpark", "SparkSQL", "Microsoft Power BI"],
-      problemStatement: "Understanding plantation trends and patterns is crucial for policy-making and agricultural planning, but large-scale agricultural datasets require sophisticated big data processing capabilities.",
-      solution: "Executed a comprehensive big data analysis project using PySpark for distributed processing, implementing advanced preprocessing and transformation techniques to handle large-scale agricultural datasets efficiently. The solution incorporated SparkSQL for complex analytical queries and Microsoft Power BI for interactive visualization, creating a complete analytical pipeline from raw data to actionable insights.",
-      outcomes: "Successfully demonstrated the practical application of big data technologies in agricultural analytics, delivering detailed insights into plantation industry trends, productivity patterns, and regional performance metrics."
+      skills: ["PySpark", "SparkSQL", "Power BI", "Databricks"],
+      problemStatement: "Government agencies needed insights from massive agricultural datasets to make informed policy decisions about plantation industries.",
+      solution: "Created a complete data analysis pipeline that processes large agricultural datasets and presents insights through interactive visualizations.",
+      outcomes: "Delivered comprehensive insights into plantation trends and productivity patterns that support better agricultural policy decisions."
     },
     {
       id: 6,
-      title: "Data Visualization of IMDB Dataset using R-programming language",
+      title: "Movie Recommendation System",
       category: "Entertainment Analytics",
-      skills: ["R-studio", "R-programming", "recommenderlab", "ggplot2", "data.table"],
-      problemStatement: "Extracting meaningful insights from vast movie databases like IMDB requires sophisticated analytical and visualization techniques to understand complex relationships between ratings, genres, actors, and audience preferences.",
-      solution: "Built an advanced analytical platform using R programming language, implementing machine learning algorithms and recommendation systems using the recommenderlab package to analyze viewing patterns and predict user preferences. The solution incorporated ggplot2 for sophisticated data visualization and data.table for efficient large dataset processing, creating interactive visual representations that reveal hidden patterns in movie ratings, genre preferences, and demographic trends.",
-      outcomes: "Successfully demonstrated the power of statistical analysis and data visualization in understanding entertainment industry dynamics, providing actionable insights that facilitate data-driven decision-making for content creators, distributors, and recommendation systems."
+      skills: ["R Programming", "ggplot2", "Machine Learning"],
+      problemStatement: "Entertainment companies needed better ways to understand movie preferences and recommend content that viewers would actually enjoy.",
+      solution: "Built an advanced recommendation system using R that analyzes movie ratings, genres, and viewer patterns to predict preferences.",
+      outcomes: "Created accurate recommendations that help content creators and distributors make data-driven decisions about movie production and distribution."
     },
     {
       id: 7,
-      title: "Distributed Data Store Replication System",
+      title: "Distributed Storage System",
       category: "Distributed Systems",
-      skills: ["C", "UDP sockets", "OpenSSL MD5", "pthreads", "data fragmentation"],
-      problemStatement: "Build a reliable distributed storage system capable of maintaining data consistency across multiple replicas while handling concurrent read/write operations efficiently.",
-      solution: "Engineered a sophisticated replication protocol for 512 KB integer arrays, implementing intelligent data fragmentation into 32-item UDP frames for optimized network transmission. Developed efficient READ request handling with MD5 digest computation for immediate consistency verification. Implemented asynchronous broadcasting mechanism with reconciliation algorithms to achieve eventual consistency across four distributed replicas.",
-      outcomes: "Successfully achieved eventual consistency across all replicas with zero data loss, demonstrating robust distributed system design principles and reliable concurrent data operations."
+      skills: ["C Programming", "UDP Sockets", "System Design"],
+      problemStatement: "Built a reliable distributed storage system that maintains data consistency across multiple servers while handling concurrent operations.",
+      solution: "Engineered a sophisticated system that breaks data into small pieces and distributes them across multiple servers with automatic backup and recovery.",
+      outcomes: "Achieved perfect data consistency across all servers with zero data loss, demonstrating robust distributed system design principles."
     },
     {
       id: 8,
-      title: "Object Recognition System using AI",
+      title: "AI Object Recognition System",
       category: "Computer Vision",
-      skills: ["Python3.7", "TensorFlow", "NumPy", "OpenCV", "Keras", "Image AI"],
-      problemStatement: "Develop an accurate and user-friendly computer vision system capable of identifying and localizing multiple objects within images and video streams for practical applications.",
-      solution: "Implemented a comprehensive computer vision pipeline using state-of-the-art deep learning frameworks. Designed and trained neural network models for multi-object detection and classification. Created an intuitive user interface enabling seamless interaction with the recognition system. Optimized model performance through advanced training techniques and data augmentation strategies.",
-      outcomes: "Successfully achieved high-accuracy object recognition with practical applications across diverse visual contexts, providing a robust foundation for real-world computer vision deployment."
+      skills: ["Python", "TensorFlow", "OpenCV", "Deep Learning"],
+      problemStatement: "Businesses needed an accurate system to automatically identify and classify objects in images and videos for various applications.",
+      solution: "Developed a computer vision system using deep learning that can accurately identify multiple objects in images and video streams.",
+      outcomes: "Achieved high-accuracy object recognition that can be applied to security, inventory management, and interactive media applications."
     }
   ];
 
   // Project Card Component
-  const ProjectCard = ({ project }) => {
+  const ProjectCard = ({ project, index }) => {
     const isFlipped = flippedCards.includes(project.id);
+    const isEven = index % 2 === 0;
     
     return (
       <div 
         className="project-card" 
         onClick={() => handleCardFlip(project.id)}
         style={{
-          background: 'rgba(255, 255, 255, 0.08)',
-          border: '1px solid rgba(0, 245, 255, 0.3)',
-          borderRadius: '20px',
-          padding: '28px',
-          boxShadow: '0 8px 32px rgba(0, 245, 255, 0.1)',
+          background: 'rgba(255, 255, 255, 0.06)',
+          border: '2px solid rgba(0, 245, 255, 0.3)',
+          borderRadius: '24px',
+          padding: '32px',
+          boxShadow: '0 12px 40px rgba(0, 245, 255, 0.15)',
           backdropFilter: 'blur(20px)',
           cursor: 'pointer',
-          minHeight: '320px',
+          minHeight: '380px',
+          width: '100%',
+          maxWidth: '550px',
+          margin: '0 auto',
           position: 'relative',
           perspective: '1000px',
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
           overflow: 'hidden'
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'translateY(-12px) scale(1.02)';
+          e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
           e.currentTarget.style.boxShadow = '0 20px 60px rgba(0, 245, 255, 0.25)';
           e.currentTarget.style.borderColor = 'rgba(0, 245, 255, 0.6)';
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = 'translateY(0) scale(1)';
-          e.currentTarget.style.boxShadow = '0 8px 32px rgba(0, 245, 255, 0.1)';
+          e.currentTarget.style.boxShadow = '0 12px 40px rgba(0, 245, 255, 0.15)';
           e.currentTarget.style.borderColor = 'rgba(0, 245, 255, 0.3)';
         }}
       >
@@ -162,10 +138,10 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'linear-gradient(45deg, rgba(0, 245, 255, 0.05), rgba(147, 51, 234, 0.05))',
+          background: 'linear-gradient(45deg, rgba(0, 245, 255, 0.03), rgba(147, 51, 234, 0.03))',
           opacity: isFlipped ? 1 : 0,
           transition: 'opacity 0.3s ease',
-          borderRadius: '20px'
+          borderRadius: '24px'
         }} />
 
         <div style={{
@@ -191,27 +167,28 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
             {/* Category Badge */}
             <div style={{
               position: 'absolute',
-              top: '-10px',
-              right: '-10px',
+              top: '-12px',
+              right: '-12px',
               background: 'linear-gradient(135deg, #00f5ff, #9333ea)',
               color: '#ffffff',
-              padding: '4px 12px',
+              padding: '8px 16px',
               borderRadius: '20px',
-              fontSize: '11px',
+              fontSize: '12px',
               fontWeight: '600',
               textTransform: 'uppercase',
-              letterSpacing: '0.5px'
+              letterSpacing: '0.5px',
+              boxShadow: '0 4px 12px rgba(0, 245, 255, 0.3)'
             }}>
               {project.category}
             </div>
 
-            <div>
+            <div style={{ paddingTop: '20px' }}>
               <h3 style={{
                 color: '#ffffff',
-                fontSize: '22px',
+                fontSize: '26px',
                 fontWeight: '700',
                 lineHeight: '1.3',
-                margin: '20px 0',
+                margin: '0 0 24px 0',
                 textAlign: 'center',
                 background: 'linear-gradient(135deg, #ffffff, #00f5ff)',
                 WebkitBackgroundClip: 'text',
@@ -224,17 +201,17 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
               <div style={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                gap: '8px',
+                gap: '10px',
                 justifyContent: 'center',
-                marginBottom: '20px'
+                marginBottom: '24px'
               }}>
                 {project.skills.slice(0, 4).map((skill, skillIndex) => (
                   <span key={skillIndex} style={{
                     background: 'rgba(0, 245, 255, 0.15)',
                     color: '#00f5ff',
-                    padding: '6px 14px',
-                    borderRadius: '18px',
-                    fontSize: '11px',
+                    padding: '8px 16px',
+                    borderRadius: '20px',
+                    fontSize: '13px',
                     fontWeight: '500',
                     fontFamily: 'monospace',
                     border: '1px solid rgba(0, 245, 255, 0.3)'
@@ -242,18 +219,6 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
                     {skill}
                   </span>
                 ))}
-                {project.skills.length > 4 && (
-                  <span style={{
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    color: '#ffffff',
-                    padding: '6px 14px',
-                    borderRadius: '18px',
-                    fontSize: '11px',
-                    fontWeight: '500'
-                  }}>
-                    +{project.skills.length - 4}
-                  </span>
-                )}
               </div>
             </div>
             
@@ -261,14 +226,18 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
-              color: 'rgba(255, 255, 255, 0.7)',
-              fontSize: '14px',
-              fontWeight: '500'
+              gap: '12px',
+              color: 'rgba(255, 255, 255, 0.8)',
+              fontSize: '16px',
+              fontWeight: '500',
+              padding: '16px',
+              background: 'rgba(0, 245, 255, 0.1)',
+              borderRadius: '16px',
+              border: '1px solid rgba(0, 245, 255, 0.2)'
             }}>
               <div style={{
-                width: '20px',
-                height: '20px',
+                width: '24px',
+                height: '24px',
                 border: '2px solid #00f5ff',
                 borderRadius: '50%',
                 display: 'flex',
@@ -276,8 +245,8 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
                 justifyContent: 'center'
               }}>
                 <div style={{
-                  width: '6px',
-                  height: '6px',
+                  width: '8px',
+                  height: '8px',
                   background: '#00f5ff',
                   borderRadius: '50%'
                 }} />
@@ -307,7 +276,7 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
             }}>
               <h3 style={{
                 color: '#ffffff',
-                fontSize: '16px',
+                fontSize: '18px',
                 fontWeight: '700',
                 lineHeight: '1.3',
                 margin: 0,
@@ -330,64 +299,64 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
                   justifyContent: 'center',
                   background: 'linear-gradient(135deg, #24292e, #333)',
                   color: '#ffffff',
-                  padding: '8px',
+                  padding: '10px',
                   borderRadius: '12px',
                   textDecoration: 'none',
-                  width: '36px',
-                  height: '36px',
+                  width: '40px',
+                  height: '40px',
                   transition: 'all 0.3s ease',
                   border: '1px solid rgba(255, 255, 255, 0.1)',
                   flexShrink: 0,
                   marginLeft: '12px'
                 }}
               >
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor">
                   <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
                 </svg>
               </a>
             </div>
             
-            <div style={{ fontSize: '12px', lineHeight: '1.6', flex: 1 }}>
-              <div style={{ marginBottom: '16px' }}>
+            <div style={{ fontSize: '14px', lineHeight: '1.6', flex: 1 }}>
+              <div style={{ marginBottom: '18px' }}>
                 <div style={{ 
                   display: 'flex', 
                   alignItems: 'center', 
-                  gap: '8px', 
-                  marginBottom: '8px' 
+                  gap: '10px', 
+                  marginBottom: '10px' 
                 }}>
                   <div style={{
                     width: '4px',
-                    height: '16px',
+                    height: '18px',
                     background: 'linear-gradient(to bottom, #ff6b6b, #ff8e8e)',
                     borderRadius: '2px'
                   }} />
-                  <strong style={{ color: '#ff6b6b', fontSize: '13px', fontWeight: '600' }}>
-                    Challenge
+                  <strong style={{ color: '#ff6b6b', fontSize: '15px', fontWeight: '600' }}>
+                    Problem
                   </strong>
                 </div>
-                <p style={{ color: 'rgba(255, 255, 255, 0.9)', margin: '0 0 0 16px', lineHeight: '1.5' }}>
+                <p style={{ color: 'rgba(255, 255, 255, 0.9)', margin: '0 0 0 18px', lineHeight: '1.6' }}>
                   {project.problemStatement}
                 </p>
               </div>
               
-              <div style={{ marginBottom: '16px' }}>
+              <div style={{ marginBottom: '18px' }}>
                 <div style={{ 
                   display: 'flex', 
                   alignItems: 'center', 
-                  gap: '8px', 
-                  marginBottom: '8px' 
+                  gap: '10px', 
+                  marginBottom: '10px' 
                 }}>
                   <div style={{
                     width: '4px',
-                    height: '16px',
+                    height: '18px',
                     background: 'linear-gradient(to bottom, #4ecdc4, #6ee7dd)',
                     borderRadius: '2px'
                   }} />
-                  <strong style={{ color: '#4ecdc4', fontSize: '13px', fontWeight: '600' }}>
+                  <strong style={{ color: '#4ecdc4', fontSize: '15px', fontWeight: '600' }}>
                     Solution
                   </strong>
                 </div>
-                <p style={{ color: 'rgba(255, 255, 255, 0.9)', margin: '0 0 0 16px', lineHeight: '1.5' }}>
+                <p style={{ color: 'rgba(255, 255, 255, 0.9)', margin: '0 0 0 18px', lineHeight: '1.6' }}>
                   {project.solution}
                 </p>
               </div>
@@ -396,20 +365,20 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
                 <div style={{ 
                   display: 'flex', 
                   alignItems: 'center', 
-                  gap: '8px', 
-                  marginBottom: '8px' 
+                  gap: '10px', 
+                  marginBottom: '10px' 
                 }}>
                   <div style={{
                     width: '4px',
-                    height: '16px',
+                    height: '18px',
                     background: 'linear-gradient(to bottom, #45b7d1, #74c7ec)',
                     borderRadius: '2px'
                   }} />
-                  <strong style={{ color: '#45b7d1', fontSize: '13px', fontWeight: '600' }}>
-                    Impact
+                  <strong style={{ color: '#45b7d1', fontSize: '15px', fontWeight: '600' }}>
+                    Results
                   </strong>
                 </div>
-                <p style={{ color: 'rgba(255, 255, 255, 0.9)', margin: '0 0 0 16px', lineHeight: '1.5' }}>
+                <p style={{ color: 'rgba(255, 255, 255, 0.9)', margin: '0 0 0 18px', lineHeight: '1.6' }}>
                   {project.outcomes}
                 </p>
               </div>
@@ -419,15 +388,15 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '10px',
               color: 'rgba(255, 255, 255, 0.6)',
-              fontSize: '11px',
+              fontSize: '13px',
               marginTop: 'auto',
-              paddingTop: '10px'
+              paddingTop: '12px'
             }}>
               <div style={{
-                width: '16px',
-                height: '16px',
+                width: '18px',
+                height: '18px',
                 border: '2px solid rgba(0, 245, 255, 0.5)',
                 borderRadius: '50%',
                 display: 'flex',
@@ -435,13 +404,13 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
                 justifyContent: 'center'
               }}>
                 <div style={{
-                  width: '4px',
-                  height: '4px',
+                  width: '6px',
+                  height: '6px',
                   background: 'rgba(0, 245, 255, 0.5)',
                   borderRadius: '50%'
                 }} />
               </div>
-              Click to return
+              Click to go back
             </div>
           </div>
         </div>
@@ -452,209 +421,141 @@ const ProjectGridSection = ({ currentSection, sectionIndex, onRobotPopupChange }
   return (
     <div className="project-grid-section" style={{
       display: 'flex',
+      flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       minHeight: '100vh',
-      position: 'relative'
+      position: 'relative',
+      padding: '60px 20px 40px 20px'
     }}>
-      <div className="project-intro" style={{
+      {/* Header Section */}
+      <div style={{
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        gap: '40px',
-        maxWidth: '1200px',
-        width: '100%',
-        padding: '20px',
-        position: 'relative',
-        zIndex: 1
+        textAlign: 'center',
+        marginBottom: '60px',
+        maxWidth: '800px'
       }}>
-        {/* Robot section */}
+        {/* Robot with speech bubble */}
         <div style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent: 'center'
+          marginBottom: '30px'
         }}>
-          {/* Thinking bubble */}
           <div style={{
-            background: 'rgba(255, 255, 255, 0.1)',
-            border: '2px solid rgba(0, 245, 255, 0.5)',
-            borderRadius: '20px',
-            padding: '15px 25px',
+            background: 'rgba(255, 255, 255, 0.12)',
+            border: '2px solid rgba(0, 245, 255, 0.6)',
+            borderRadius: '25px',
+            padding: '18px 30px',
             position: 'relative',
-            boxShadow: '0 0 20px rgba(0, 245, 255, 0.3)',
-            backdropFilter: 'blur(10px)',
-            marginBottom: '20px'
+            boxShadow: '0 0 30px rgba(0, 245, 255, 0.4)',
+            backdropFilter: 'blur(20px)',
+            marginBottom: '25px'
           }}>
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '10px'
+              gap: '12px'
             }}>
               <div style={{
                 display: 'flex',
-                gap: '4px',
+                gap: '5px',
                 alignItems: 'center'
               }}>
                 <div style={{
                   width: '8px',
                   height: '8px',
                   background: '#00f5ff',
-                  borderRadius: '50%'
+                  borderRadius: '50%',
+                  boxShadow: '0 0 10px #00f5ff'
                 }} />
                 <div style={{
                   width: '6px',
                   height: '6px',
                   background: '#00f5ff',
-                  borderRadius: '50%'
+                  borderRadius: '50%',
+                  boxShadow: '0 0 8px #00f5ff'
                 }} />
                 <div style={{
                   width: '8px',
                   height: '8px',
                   background: '#00f5ff',
-                  borderRadius: '50%'
+                  borderRadius: '50%',
+                  boxShadow: '0 0 10px #00f5ff'
                 }} />
               </div>
               <span style={{
                 color: '#ffffff',
                 fontSize: '20px',
-                fontWeight: 'bold',
+                fontWeight: '700',
                 fontFamily: 'monospace',
-                letterSpacing: '1px'
+                letterSpacing: '1px',
+                textShadow: '0 0 10px rgba(0, 245, 255, 0.5)'
               }}>
-                Hey, it's me again - Dinky!
+                Here are my projects - scroll to explore!
               </span>
             </div>
             <div style={{
               position: 'absolute',
-              bottom: '-10px',
+              bottom: '-12px',
               left: '50%',
               transform: 'translateX(-50%)',
               width: 0,
               height: 0,
-              borderLeft: '10px solid transparent',
-              borderRight: '10px solid transparent',
-              borderTop: '10px solid rgba(0, 245, 255, 0.5)'
+              borderLeft: '12px solid transparent',
+              borderRight: '12px solid transparent',
+              borderTop: '12px solid rgba(0, 245, 255, 0.6)',
+              filter: 'drop-shadow(0 0 5px rgba(0, 245, 255, 0.3))'
             }} />
           </div>
           
-          <div 
-            className="hero-lottie" 
-            onClick={handleRobotClick} 
-            style={{ cursor: 'pointer' }}
-          >
-            <WavingRobotLottie width={350} height={350} />
-          </div>
+          <WavingRobotLottie width={200} height={200} />
         </div>
 
-        {/* Welcome text */}
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          textAlign: 'center'
+        <h1 style={{
+          background: 'linear-gradient(135deg, #ffffff 0%, #00f5ff 50%, #9333ea 100%)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+          fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+          fontWeight: '800',
+          marginBottom: '20px',
+          letterSpacing: '-0.02em',
+          lineHeight: '1.1',
+          textShadow: '0 0 30px rgba(0, 245, 255, 0.3)'
         }}>
-          <h1 style={{
-            color: '#ffffff',
-            fontSize: '48px',
-            fontWeight: 'bold',
-            marginBottom: '5px',
-            letterSpacing: 'normal',
-            wordSpacing: '-2px'
-          }}>
-            Explore My Projects
-          </h1>
-          <p style={{
-            color: '#00f5ff',
-            fontSize: '24px',
-            marginBottom: '15px'
-          }}>
-            Click the robo to view all projects
-          </p>
-        </div>
+          My Projects
+        </h1>
+        
+        <p style={{
+          color: 'rgba(255, 255, 255, 0.8)',
+          fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
+          lineHeight: '1.6',
+          maxWidth: '600px'
+        }}>
+          Each project showcases different technical challenges I've solved. 
+          Click any card to see the problem, solution, and results.
+        </p>
       </div>
 
-      {/* Popup Modal */}
-      {showPopup && (
-        <div className="popup-overlay" onClick={handleClosePopup} style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'transparent',
-          boxShadow: 'inset 0 0 250px rgba(0, 0, 0, 0.75)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000,
-          backdropFilter: 'blur(10px)',
-          transition: 'background 0.3s ease-in-out'
-        }}>
-          <div className="popup-container" onClick={(e) => e.stopPropagation()} style={{
-            background: 'rgba(0, 0, 0, 0.2)',
-            border: '1px solid rgba(0, 245, 255, 0.3)',
-            borderRadius: '20px',
-            padding: '20px',
-            width: '95vw',
-            maxWidth: '1400px',
-            maxHeight: '90vh',
-            overflowY: 'auto',
-            position: 'relative',
-            boxShadow: '0 10px 30px rgba(0, 245, 255, 0.08)',
-            backdropFilter: 'blur(10px)',
-            margin: '10px'
-          }}>
-            <div className="popup-header" style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '20px',
-              borderBottom: '1px solid rgba(0, 245, 255, 0.3)',
-              paddingBottom: '10px'
-            }}>
-              <h2 className="popup-title" style={{
-                color: '#ffffff',
-                fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-                fontWeight: 'bold',
-                margin: 0
-              }}>
-                All Projects
-              </h2>
-              <button className="popup-close" onClick={handleClosePopup} style={{
-                background: 'rgba(0, 245, 255, 0.2)',
-                border: '1px solid rgba(0, 245, 255, 0.5)',
-                fontSize: 'clamp(1.5rem, 4vw, 2rem)',
-                cursor: 'pointer',
-                color: '#00f5ff',
-                width: 'clamp(30px, 8vw, 40px)',
-                height: 'clamp(30px, 8vw, 40px)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: '50%',
-                transition: 'all 0.3s ease',
-                flexShrink: 0
-              }}>
-                ×
-              </button>
-            </div>
-            
-            <div className="popup-content">
-              <div className="projects-grid" style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                gap: '20px'
-              }}>
-                {projects.map((project) => (
-                  <ProjectCard key={project.id} project={project} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Projects Grid - 2 per row, scrollable */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(500px, 1fr))',
+        gap: '40px',
+        width: '100%',
+        maxWidth: '1200px',
+        padding: '0 20px'
+      }}>
+        {projects.map((project, index) => (
+          <ProjectCard key={project.id} project={project} index={index} />
+        ))}
+      </div>
+
+      {/* Bottom spacing */}
+      <div style={{ height: '60px' }} />
     </div>
   );
 };
