@@ -37,7 +37,7 @@ const ExperienceSectionWithRobot = ({ currentSection, sectionIndex }) => {
 
   const experiences = [
     {
-      title: "Graduate Assistant (Data Engineer & Teaching Assistant)",
+      title: "Graduate Assistant (Senior Data Engineer & Teaching Assistant)",
       company: "Cleveland State University",
       duration: "August 2023 - May 2025",
       description: 
