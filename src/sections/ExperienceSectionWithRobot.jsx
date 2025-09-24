@@ -37,25 +37,32 @@ const ExperienceSectionWithRobot = ({ currentSection, sectionIndex }) => {
 
   const experiences = [
     {
-      title: "Graduate Assistant (Senior Data Engineer & Teaching Assistant)",
-      company: "Cleveland State University",
-      duration: "August 2023 - May 2025",
+      title: "Research Assistant",
+      company: "Women in AI, USA",
+      duration: "June 2025 – Present",
       description: 
-        "Delivered comprehensive academic support by automating grading analytics for 150+ students while mentoring 40+ peers in programming and data engineering concepts, showcasing my ability to translate complex technical knowledge into accessible learning experiences. Through collaborative leadership, I co-created innovative teaching resources and prototyped a multi-agent website framework, demonstrating my technical versatility and passion for knowledge sharing."
+        "Conducted research on AI bias mitigation techniques in educational data systems, contributing to institutional equity and inclusion initiatives. Developed automated data collection and analysis frameworks for gender representation studies using Python and SQL databases. Collaborated with cross-functional research teams to design data governance protocols ensuring ethical AI implementation in academic environments."
+    },
+    {
+      title: "Senior Data Engineer (Graduate Assistant)",
+      company: "Cleveland State University, USA",
+      duration: "August 2023 – May 2025",
+      description: 
+        "Accelerated decision making by 40% with GenAI applications using HuggingFace & LangChain, delivering $200K+ in operational efficiency. Implemented MLOps practices for GenAI model deployment with AI guardrails & continuous model monitoring using MLflow with Azure Databricks. Led technical presentations to 70+ stakeholders, demonstrating cross-functional collaboration using Microsoft Azure, SQL and Power BI, enabling real-time monitoring of 15+ business metrics."
     },
     {
       title: "Data Engineer",
-      company: "LTIMindtree (Formerly Mindtree Ltd)",
-      duration: "Aug 2021 - Aug 2023",
+      company: "International Motors (formerly Navistar Inc.), USA",
+      duration: "August 2021 – August 2023",
       description:
-        "Architected and delivered enterprise-scale data solutions across Azure Synapse, PySpark, and DevOps ecosystems, managing 10TB+ of multi-domain data while achieving 40% performance improvements and 60% faster deployment cycles through strategic automation. By deeply understanding IoT analytics business requirements, I designed cost-effective data warehousing solutions and implemented robust SLAs that ensured compliance and data quality, while my cross-functional collaboration with product managers and data scientists drove actionable insights and accelerated client validation processes by 30%. Through meticulous monitoring and optimization, I boosted Azure Data Pipeline performance by an additional 30% while achieving a remarkable 75% reduction in logical and PySpark notebook errors through comprehensive unit testing and data validation frameworks. My proactive approach included developing PowerShell scripts for systematic cluster-linked notebook identification, designing monthly data quality assessments via Synapse notebooks, and generating weekly data integrity reports using Tableau that increased stakeholder confidence and enabled proactive issue resolution. Leveraging agile methodologies and cost-effective Spark cluster management, my technical expertise spanning distributed computing, synthetic data generation, and petabyte-scale infrastructure enabled advanced analytics initiatives that directly supported strategic business decisions while maintaining optimal performance and operational transparency."
+        "Designed scalable data architectures supporting 70+ million customer data points for marketing analytics and sales insights. Delivered $400K savings and 30% performance gains building multi-step ETL pipelines with data streaming using Apache Kafka, PySpark, Azure Synapse & Azure DevOps. Reduced data inconsistencies by 75% through governance frameworks and Salesforce CRM integration with SLAs."
     },
     {
-      title: "Jr. ML Engineer",
-      company: "Yotta Data Center",
-      duration: "Dec 2019 - July 2021",
+      title: "Junior Machine Learning Engineer",
+      company: "Yotta Data Center, India",
+      duration: "December 2019 – July 2021",
       description:
-        "Transformed operational efficiency by building Jenkins CI/CD pipelines that increased deployment frequency by 35% while strategically migrating AWS data to cost-effective SQL Server solutions for real-time KPI generation. Through proactive problem-solving and cross-functional collaboration, I reduced system downtime by 20% and established data governance best practices that balanced business impact with privacy compliance, demonstrating my ability to understand both technical requirements and business constraints."
+        "Improved ML accuracy by 25% with production pipelines using Python & scikit-learn for statistical modeling. Processed 50,000+ IoT telemetry points through real-time feature stores and XGBoost classification systems. Deployed scalable ML models using Docker containerization and AWS cloud platforms."
     }
   ];
 
