@@ -56,13 +56,6 @@ const ExperienceSectionWithRobot = ({ currentSection, sectionIndex }) => {
       duration: "August 2021 – August 2023",
       description:
         "Designed scalable data architectures supporting 70+ million customer data points for marketing analytics and sales insights. Delivered $400K savings and 30% performance gains building multi-step ETL pipelines with data streaming using Apache Kafka, PySpark, Azure Synapse & Azure DevOps. Reduced data inconsistencies by 75% through governance frameworks and Salesforce CRM integration with SLAs."
-    },
-    {
-      title: "Junior Machine Learning Engineer",
-      company: "Yotta Data Center, India",
-      duration: "December 2019 – July 2021",
-      description:
-        "Improved ML accuracy by 25% with production pipelines using Python & scikit-learn for statistical modeling. Processed 50,000+ IoT telemetry points through real-time feature stores and XGBoost classification systems. Deployed scalable ML models using Docker containerization and AWS cloud platforms."
     }
   ];
 
